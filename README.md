@@ -27,7 +27,7 @@ pyenv install 3.11.9
 pyenv local 3.11.9
 ```
 
-### 2. Install the Project dependencies
+### 4. Install the Project dependencies
 Once Poetry is installed, navigate to the project directory and install the dependencies listed in the `pyproject.toml` file using Poetry.
 
 ```cmd
@@ -37,12 +37,23 @@ poetry install
 
 This will create a virtual environment and install all the dependencies specified in `pyproject.toml`.
 
-### 3. Install pre-commit
+### 5. Install pre-commit
 Install pre-commit from its [official installation page](https://pre-commit.com/#install).
 
 ```cmd
 pre-commit install
 ```
+
+## Run the app
+
+### Locally
+To run the application locally run the following command:
+
+```cmd
+uvicorn app.main:app --reload
+```
+
+Then open your browser and go to `http://127.0.0.1:8000` or `http://localhost:8000` to see the app running.
 
 ## Styling
 
@@ -71,3 +82,11 @@ If your commit does not meet these requirements, then it will fail. You will hav
 All pre-commit tests can be found in `.pre-commit-config.yaml`
 
 Run `pre-commit autoupdate` to update the pre-commit hook repositories.
+
+## Testing
+
+Run the tests using:
+
+```cmd
+pytest
+```

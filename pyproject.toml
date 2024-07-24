@@ -2,7 +2,7 @@
 name = "templates-api"
 version = "0.1.0"
 description = "Template for python API development using FastAPI."
-authors = ["Claudia De Jeu Boronat <clau.dejeuboronat@towerswatson.com>"]
+authors = ["Claudia De Jeu Boronat <claudiadejeuboronat@gmail.com>"]
 readme = "README.md"
 packages = [{include = "templates"}]
 
@@ -13,6 +13,8 @@ numpy = "^2.0.1"
 fastapi = "^0.111.1"
 pydantic = "^2.8.2"
 scikit-learn = "^1.5.1"
+sqlalchemy = "^2.0.31"
+uvicorn = "^0.30.3"
 
 [tool.poetry.group.dev.dependencies]
 pre-commit = "^1.0.0"
