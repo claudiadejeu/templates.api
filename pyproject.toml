@@ -1,10 +1,10 @@
 [tool.poetry]
-name = "templates-api"
+name = "templates_api"
 version = "0.1.0"
 description = "Template for python API development using FastAPI."
 authors = ["Claudia De Jeu Boronat <claudiadejeuboronat@gmail.com>"]
 readme = "README.md"
-packages = [{include = "templates"}]
+packages = [{include = "templates_api", from = "src"}]
 
 [tool.poetry.dependencies]
 python = "~3.11.9"
@@ -21,15 +21,63 @@ pre-commit = "^1.0.0"
 PyYAML = "^6.0.1"
 types-jsonschema = "^4.23.0.20240712"
 
+[tool.poetry.group.test.dependencies]
+pytest = "^7.2.0"
+coverage = "^6.5.0"
+pytest-cov = "^4.0.0"
+requests = "^2.32.0"
 
 [tool.poetry.group.linting.dependencies]
-black = "^24.4.2"
-isort = "^5.13.2"
-mypy = "^1.11.0"
-flake8 = "^7.1.0"
-docformatter = "^1.7.5"
-bandit = "^1.7.9"
+mypy = "^1.0.1"
+ruff = "0.6.2"
 
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.ruff]
+line-length = 120
+exclude = [
+    ".git",
+    ".ipynb_checkpoints",
+    ".mypy_cache",
+    ".pyenv",
+    ".pytest_cache",
+    ".pytype",
+    ".ruff_cache",
+    ".tox",
+    ".venv",
+    ".vscode",
+    "__pypackages__",
+    "_build",
+    "buck-out",
+    "build",
+    "dist",
+    ".dist",
+    "node_modules",
+    "site-packages",
+    "venv",
+]
+
+[tool.ruff.lint]
+# Below are the default Ruff rules plus flake8-bandit (`S`):
+# Enable Pyflakes (`F`) and a subset of the pycodestyle (`E`) codes by default.
+# Unlike Flake8, Ruff doesn't enable pycodestyle warnings (`W`) or
+# McCabe complexity (`C901`) by default.
+select = ["E4", "E7", "E9", "F", "S"]
+# Allow fix for all enabled rules (when `--fix`) is provided.
+fixable = ["ALL"]
+
+[tool.ruff.lint.per-file-ignores]
+"__init__.py" = ["F401"]
+"tests/*" = ["S101"]
+
+[tool.ruff.format]
+docstring-code-format = true
+docstring-code-line-length = 120
+
+[tool.mypy]
+python_version = "3.11"
+exclude = ".venv/"
+warn_return_any = true
+warn_unused_configs = true
