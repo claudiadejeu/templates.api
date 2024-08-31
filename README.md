@@ -61,10 +61,8 @@ Please ensure you adhere to [PEP8 Style Guide](https://peps.python.org/pep-0008/
 
 We also use a multitude of linters and formatters:
 
-- [Black](https://black.readthedocs.io/en/stable/) → Formats text
-- [isort](https://pycqa.github.io/isort/#installing-isort) → Sorts imports
 - [mypy](https://mypy.readthedocs.io/en/stable/cheat_sheet_py3.html) → Strong typing hints
-- [flake8](https://flake8.pycqa.org/en/latest/) → Linter (checks against pep8 style)
+- [ruff](https://docs.astral.sh/ruff/) → Linter (checks against pep8 style), sorts imports, and formats text
 
 Please use the settings from `.vscode/settings.json` if using VSCode and only `settings.local.json` to overwrite these. If using another editor, please transfer these settings across.
 
@@ -73,6 +71,7 @@ Ensure you run the formatter before committing.
 ```shell
 poetry run format
 ```
+
 ### Pre-commit
 
 Pre-commit hooks are a set of tests that run locally before a commit. These are executed using [pre-commit hooks](https://pre-commit.com/) package.
@@ -84,9 +83,8 @@ All pre-commit tests can be found in `.pre-commit-config.yaml`
 Run `pre-commit autoupdate` to update the pre-commit hook repositories.
 
 ## Testing
-
-Run the tests using:
+We use the pytest framework. Run the tests using:
 
 ```cmd
-pytest
+poetry run pytest
 ```
