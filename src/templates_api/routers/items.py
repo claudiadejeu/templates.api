@@ -29,7 +29,7 @@ def read_items(
     return items
 
 
-@router.get("/{item_id}", response_class=schemas.Item)
+@router.get("/{item_id}", response_model=schemas.Item)
 def read_item(
     item_id: int = Path(..., title="The ID of the item to retrieve", ge=1),
     db: Session = Depends(get_db),
@@ -43,7 +43,7 @@ def read_item(
     return db_item
 
 
-@router.put("/{item_id}", response_class=schemas.Item)
+@router.put("/{item_id}", response_model=schemas.Item)
 def update_item(
     item_id: int = Path(..., title="The ID of the item to update", ge=1),
     item: schemas.ItemUpdate = Body(..., description="Updated item information"),
@@ -58,7 +58,7 @@ def update_item(
     return db_item
 
 
-@router.patch("/{item_id}", response_class=schemas.Item)
+@router.patch("/{item_id}", response_model=schemas.Item)
 def partial_update_item(
     item_id: int = Path(..., title="The ID of the item to update", ge=1),
     item: schemas.ItemUpdate = Body(..., description="Partial item updated information"),
@@ -73,7 +73,7 @@ def partial_update_item(
     return db_item
 
 
-@router.delete("/{item_id}", response_class=schemas.Item)
+@router.delete("/{item_id}", response_model=schemas.Item)
 def delete_item(
     item_id: int = Path(..., title="The ID of the item to delete", ge=1),
     db: Session = Depends(get_db),
@@ -87,7 +87,7 @@ def delete_item(
     return db_item
 
 
-@router.get("/search/", response_class=List[schemas.Item])
+@router.get("/search/", response_model=List[schemas.Item])
 def search_items(
     query: str = Query(..., description="Search query"),
     db: Session = Depends(get_db),

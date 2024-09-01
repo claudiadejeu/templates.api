@@ -50,10 +50,12 @@ pre-commit install
 To run the application locally run the following command:
 
 ```cmd
-uvicorn app.main:app --reload
+uvicorn src.templates_api.main:app --reload
 ```
 
 Then open your browser and go to `http://127.0.0.1:8000` or `http://localhost:8000` to see the app running.
+
+If you wish to use the OpenAPI documentation, then access `http://localhost:8000/docs`.
 
 ## Styling
 
